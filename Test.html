@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<HTML lang="PT-BR">
+
+<HEAD>
+    <meta charset="utf-8" />
+    <title>Live University test</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link type="text/css" rel="stylesheet" href="test.css/test.css" />
+    <link rel="icon" type="image/png" href="Img/download.jpg" sizes="32x32" />
+</HEAD>
+
+<body>
+    <div id="container">
+        <figure>
+            <img id="cropped" src="Img/cropped-Institucional_Live-U.png" alt="Logo da Live University"
+                title="Logo da live university com direitos reservados" />
+        </figure>
+
+        <div menu id="coluna1">
+            <input onclick="opcao()" type="button" value="Opção" id="btnopcao"></input>
+
+            <div class="quantidade">
+                <label for="">Quantidade</label>
+                <input type="number" id="valor">
+                <button value="Enviar" onclick="capturar()"id="enviar">Enviar</button var="validador()" ;>
+                <p id="valorDigitado"></p>
+
+            </div>
+
+        </div>
+
+        <div id="coluna2" class="hidden">
+
+            <div >
+
+                <label for="letras" id="chooses">Escolha a opção:</label>
+
+                <select name="select" id="select" onchange="mySelect()">
+                    <option value="A" selected>A</option>
+                    <option value="B" selected>B</option>
+                </select>
+
+            </div>
+
+        </div>
+        <div id="coluna3"></div>
+        <div id="rodape">
+            <p> Live University </p>
+        </div>
+
+    </div>
+
+</body>
+
+<script>
+    //função para funcionar o botão opção
+    document.getElementById('container').onclick = function (e) {
+        x = document.querySelector('#coluna2');
+        btnopcao = document.getElementById('btnopcao');
+        if (!(e.target === x || x.contains(e.target) || e.target === btnopcao)) {
+            esconder1();
+        }
+    }
+    //função que coloca em movimento o botão opção se clicar no botão opção abrir coluna
+    function opcao() {
+        if (document.getElementById("coluna2").style.display == "none") {
+            document.getElementById("coluna2").style.display = "block";
+        } else {
+            document.getElementById("coluna2").style.display = "none";
+        }
+    }
+
+
+    //função esconder 1 que esconde coluna 2 quando clicar o mouse de cima
+    function esconder1() {
+        document.getElementById("coluna2").style.display = "none";
+    }
+    //função para aceitar numeros no input quantidade
+    function validador() {
+        x = document.getElementById('valor').value;
+        y = document.getElementById("coluna2").style.display == "block";
+        if (y) {
+            if (x == '' || x == undefined) {
+                alert("Inserir número!");
+                document.getElementById('valor').focus();
+                return false;
+            }
+        }
+    }
+
+    function capturar() {
+        let valorMultiplicar = document.getElementById('valor').value;
+        let value = select.options[select.selectedIndex].value;
+        let colunaDados = document.getElementById("coluna3");
+        let template = "";
+        // TODO: Alterar o valor de A com o valor de H
+        for (let i = 1; i <= valorMultiplicar; i++) {
+            template += ` 
+            <div>
+                <p>Item${(i)}</p>
+            </div> `
+        }
+        colunaDados.innerHTML = template;
+    }
+    // função que seleciona na coluna 2
+    function mySelect() {
+        var letra = document.getElementById("select").value;
+        let valorMultiplicar = document.getElementById('valor').value;
+        // let value = select.options[select.selectedIndex].value;
+        let colunaDados = document.getElementById("coluna3");
+        let template  = "";
+        // TODO: Alterar o valor de A com o valor de H
+        for  (let i = 1; i <= valorMultiplicar; i++) {
+            template += ` 
+            <div id="div3">
+                <p><span id="div4">${(i)}</span> Item ${(letra)}${(i)}</p>
+            </div> `
+        }
+        colunaDados.innerHTML = template;
+    }
+
+
+</script>
+
+</HTML>

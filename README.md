@@ -1,2 +1,2 @@
 # livetest
-Um menu dropdown com colunas css aplicado em html
+Projeto voltado para exemplificar uma pagina web simples, utilizando HTML5, CCS3 e JS.
